@@ -1,6 +1,8 @@
 const Sequelize = require("sequelize");
-const sequelize = new Sequelize("companyDB", "postgres", "123456", {
-    dialect: "postgres",
+const config = require("../config.json")
+const sequelize = new Sequelize(config.database, config.username, config.password, {
+    dialect: config.dialect,
+    host: config.host,
     define: {
         timestamps: false
     }
@@ -9,6 +11,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.companies = require("../Models/Company")(sequelize, Sequelize);
+db.users = require("../Models/User")(sequelize,Sequelize);
 
 async function checkConnectionDB() {
     try {

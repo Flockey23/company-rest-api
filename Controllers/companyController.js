@@ -3,7 +3,7 @@ const Company = DB.db.companies;
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
     if (!req.body.title && !req.body.FIO_contact && !req.body.phone && !req.body.email && !req.body.site && !req.body.postcode
-        && !req.body.city && !req.body.street && !req.body.house && !req.body.geo_width && !req.body.geo_length) {
+        && !req.body.city && !req.body.street && !req.body.house && !req.body.latitude && !req.body.longitude) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
@@ -20,8 +20,8 @@ exports.create = (req, res) => {
         city: req.body.city,
         street: req.body.street,
         house: req.body.house,
-        geo_width: req.body.geo_width,
-        geo_length: req.body.geo_length
+        latitude: req.body.latitude,
+        longitude: req.body.longitude
     }
 
     Company.create(company)

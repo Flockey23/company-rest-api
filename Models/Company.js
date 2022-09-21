@@ -44,11 +44,11 @@ module.exports = (sequelize,Sequelize) => {
             type: Sequelize.INTEGER,
             allowNull: false
         },
-        geo_width: {
+        latitude: {
             type: Sequelize.INTEGER,
             allowNull: false
         },
-        geo_length: {
+        longitude: {
             type: Sequelize.INTEGER,
             allowNull: false
         }

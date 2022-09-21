@@ -17,4 +17,5 @@ require('../company-rest-api/routes/company.routes')(app);
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
     db.checkConnectionDB();
+    db.syncDB();
 });

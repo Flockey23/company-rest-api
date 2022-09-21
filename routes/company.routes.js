@@ -1,10 +1,17 @@
 module.exports = app => {
     const companies = require('../Controllers/companyController');
-    const router = require("express").Router();
-    router.get("/",companies.findAll);
-    router.post("/",companies.create);
-    router.get("/:id",companies.findOne)
-    router.put("/:id",companies.update)
-    router.delete("/:id",companies.delete)
-    app.use('/api/companies',router);
+    const users = require('../Controllers/userController');
+    const routerCompanies = require("express").Router();
+    const routerAuth = require("express").Router();
+    routerCompanies.get("/",companies.findAll);
+    routerCompanies.post("/",companies.create);
+    routerCompanies.get("/:id",companies.findOne)
+    routerCompanies.put("/:id",companies.update)
+    routerCompanies.delete("/:id",companies.delete)
+
+    routerAuth.post("/signup",users.signup);
+    routerAuth.post("/signin",users.signin);
+
+    app.use('/api/companies',routerCompanies);
+    app.use('/api/auth',routerAuth);
 }
